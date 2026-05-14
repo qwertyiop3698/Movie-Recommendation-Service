@@ -290,14 +290,14 @@ def render_app() -> None:
     st.markdown('<div class="hero-title">영화 추천 서비스</div>', unsafe_allow_html=True)
     st.markdown(
         '<div class="hero-description">'
-        "마음에 드는 영화 한 편을 고르면, 줄거리와 장르, 출연진 등 콘텐츠 유사도를 바탕으로 "
+        "마음에 드는 영화 한 편을 고르면, 줄거리와 장르 기반 TF-IDF 및 코사인 유사도를 바탕으로 "
         "함께 보기 좋은 영화 10편을 추천합니다."
         "</div>",
         unsafe_allow_html=True,
     )
 
     try:
-        movies, _, similarity_source = load_data()
+        movies, _, _ = load_data()
     except Exception as error:
         st.error(f"앱 실행에 필요한 데이터를 불러오지 못했습니다. {error}")
         st.stop()
@@ -308,7 +308,6 @@ def render_app() -> None:
     if not TMDB_API_KEY:
         st.warning("TMDB_API_KEY가 설정되지 않아 기본 이미지로 표시됩니다. .env 또는 Streamlit secrets에 키를 등록해 주세요.")
 
-    st.caption(f"추천 모델: {similarity_source}")
     movie_list = np.sort(movies["title"].dropna().unique())
     selected_title = st.selectbox("영화를 선택하세요", movie_list, index=0)
 
