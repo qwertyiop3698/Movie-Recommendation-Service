@@ -4,3 +4,5 @@ numpy
 tmdbv3api
 python-dotenv
 scikit-learn
+matplotlib
+seaborn
