@@ -2,7 +2,7 @@
 
 Streamlit으로 만든 콘텐츠 기반 영화 추천 웹앱입니다. 사용자가 영화 제목을 선택하면 줄거리와 장르 정보를 바탕으로 비슷한 영화 10편을 추천합니다.
 
-![영화 선택 화면](assets/screenshots/select-movie.png)
+<img src="assets/screenshots/select-movie.png" alt="영화 선택 화면" width="650" style="border: 1px solid #d0d7de; border-radius: 6px;">
 
 ## 주요 기능
 
@@ -16,7 +16,7 @@ Streamlit으로 만든 콘텐츠 기반 영화 추천 웹앱입니다. 사용자
 
 추천 버튼을 누르면 영화 포스터와 제목이 카드 형태로 표시됩니다.
 
-![추천 결과 화면](assets/screenshots/recommendation-result.png)
+<img src="assets/screenshots/recommendation-result.png" alt="추천 결과 화면" width="650" style="border: 1px solid #d0d7de; border-radius: 6px;">
 
 ## 추천 방식
 
@@ -36,7 +36,7 @@ def create_recommendation_text(row):
 4. `cosine_similarity`로 영화 간 유사도를 계산합니다.
 5. 선택한 영화 자신과 중복 영화를 제외하고 유사도가 높은 영화 10편을 반환합니다.
 
-![추천 유사도 차트](assets/screenshots/recommendation-similarity-chart.png)
+<img src="assets/screenshots/recommendation-similarity-chart.png" alt="추천 유사도 차트" width="650" style="border: 1px solid #d0d7de; border-radius: 6px;">
 
 ## 기술 스택
 
@@ -49,6 +49,33 @@ def create_recommendation_text(row):
 - python-dotenv
 - matplotlib
 - seaborn
+
+## 프로젝트 구조
+
+```text
+.
+├── app.py
+├── requirements.txt
+├── .env.example
+├── README.md
+├── assets/
+│   ├── no_image.png
+│   └── screenshots/
+│       ├── select-movie.png
+│       ├── recommendation-result.png
+│       └── recommendation-similarity-chart.png
+├── data/
+│   ├── tmdb_5000_movies.csv
+│   └── tmdb_5000_credits.csv
+├── models/
+│   ├── movies.pkl
+│   ├── cosine_sim.pkl
+│   └── cosine_sim2.pkl
+└── notebooks/
+    ├── Content Based Fitering.ipynb
+    ├── create_recommendation_chart.py
+    └── recommendation_model_example.py
+```
 
 ## 설치 및 실행
 
@@ -85,6 +112,14 @@ TMDB API 키가 없어도 추천 기능은 동작합니다. 다만 포스터와 
 - `assets/no_image.png`
 
 `movies.pkl`에는 최소한 `id`, `title` 컬럼이 포함되어 있어야 합니다.
+
+## 모델 파일 재생성
+
+추천 모델 파일은 예제 스크립트로 다시 만들 수 있습니다.
+
+```bash
+python notebooks/recommendation_model_example.py
+```
 
 스크립트는 `data/tmdb_5000_movies.csv`와 `data/tmdb_5000_credits.csv`를 읽어 다음 파일을 생성합니다.
 
