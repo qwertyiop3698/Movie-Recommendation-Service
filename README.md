@@ -113,14 +113,6 @@ TMDB API 키가 없어도 추천 기능은 동작합니다. 다만 포스터와 
 
 `movies.pkl`에는 최소한 `id`, `title` 컬럼이 포함되어 있어야 합니다.
 
-## 모델 파일 재생성
-
-추천 모델 파일은 예제 스크립트로 다시 만들 수 있습니다.
-
-```bash
-python notebooks/recommendation_model_example.py
-```
-
 스크립트는 `data/tmdb_5000_movies.csv`와 `data/tmdb_5000_credits.csv`를 읽어 다음 파일을 생성합니다.
 
 - `models/movies.pkl`
